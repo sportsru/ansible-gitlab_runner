@@ -669,6 +669,9 @@ gitlab_runner__cache: False
 # Select the cache type. Currently only ``s3`` is supported.
 gitlab_runner__cache_type: 's3'
 
+
+gitlab_runner__cache_path: ''
+
                                                                    # ]]]
 # .. envvar:: gitlab_runner__cache_server_address [[[
 #
