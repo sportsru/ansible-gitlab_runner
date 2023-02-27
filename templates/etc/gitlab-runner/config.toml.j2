@@ -448,7 +448,7 @@ metrics_server = "{{ gitlab_runner__metrics_server }}"
 {%     if ((runner.cache | d() and runner.cache | bool) or gitlab_runner__cache | bool) %}
   [runners.cache]
     Type = "{{ runner.cache_type | d(gitlab_runner__cache_type) }}"
-    Path = "{{ runner.cache_type | d(gitlab_runner__cache_type) }}"
+    Path = "{{ runner.cache_path | d(gitlab_runner__cache_path) }}"
     Shared = {{ (runner.cache_shared | d(gitlab_runner__cache_shared)) | bool | lower }}
     [runners.cache.s3]
       ServerAddress = "{{ runner.cache_server_address | d(gitlab_runner__cache_server_address) }}"
