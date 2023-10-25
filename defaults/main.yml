@@ -734,3 +734,17 @@ gitlab_runner__keyring__dependent_apt_keys:
                                                                    # ]]]
                                                                    # ]]]
                                                                    # ]]]
+gitlab_runner__autoscaler_fleeting_plugin: ''
+gitlab_runner__autoscaler_capacity_per_instance: 1
+gitlab_runner__autoscaler_max_use_count: 1
+gitlab_runner__autoscaler_max_instances: 10
+gitlab_runner__autoscaler_policy_idle_count: 2
+gitlab_runner__autoscaler_policy_idle_time: '20m0s'
+gitlab_runner__autoscaler_connector_config_username: ''
+gitlab_runner__autoscaler_connector_config_use_external_addr: true
+
+# Plugin config section contain various variables for each fleeting_plugin
+# Add default variiable
+gitlab_runner__autoscaler_plugin_config: 
+  name: ''
+  config_file: ''
