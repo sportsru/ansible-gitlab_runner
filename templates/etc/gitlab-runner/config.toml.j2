@@ -452,7 +452,7 @@ metrics_server = "{{ gitlab_runner__metrics_server }}"
     [runners.autoscaler.plugin_config]
     {% for key, value in gitlab_runner__autoscaler_plugin_config %}
       {{ key }} = {{ value }}
-    {% endif %} 
+    {% endfor %} 
 
     [runners.autoscaler.connector_config]
       username          = {{ gitlab_runner__autoscaler_connector_config_username }}
