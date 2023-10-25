@@ -450,9 +450,9 @@ metrics_server = "{{ gitlab_runner__metrics_server }}"
     max_instances = {{ gitlab_runner__autoscaler_max_instances }}
 
     [runners.autoscaler.plugin_config]
-    {% for key, value in gitlab_runner__autoscaler_plugin_config.items() %}
-      {{ key }}={{ value }}
-    {% endfor %} 
+{% for key, value in gitlab_runner__autoscaler_plugin_config.items() %}
+    {{ key }}={{ value }}
+{% endfor %} 
 
     [runners.autoscaler.connector_config]
       username          = {{ gitlab_runner__autoscaler_connector_config_username }}
