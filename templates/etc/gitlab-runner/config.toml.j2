@@ -443,7 +443,7 @@ metrics_server = "{{ gitlab_runner__metrics_server }}"
 {%   endif %}
 {%  if (runner.executor in [ 'docker-autoscaler', 'instance' ]) %}
   [runners.autoscaler]
-    plugin = {{ gitlab_runner__autoscaler_fleeting_plugin }}
+    plugin = "{{ gitlab_runner__autoscaler_fleeting_plugin }}"
 
     capacity_per_instance = {{ gitlab_runner__autoscaler_capacity_per_instance }}
     max_use_count = {{ gitlab_runner__autoscaler_max_use_count }}
@@ -451,16 +451,16 @@ metrics_server = "{{ gitlab_runner__metrics_server }}"
 
     [runners.autoscaler.plugin_config]
 {% for key, value in gitlab_runner__autoscaler_plugin_config.items() %}
-    {{ key }}={{ value }}
+      {{ key }} = "{{ value }}"
 {% endfor %} 
 
     [runners.autoscaler.connector_config]
-      username          = {{ gitlab_runner__autoscaler_connector_config_username }}
+      username          = "{{ gitlab_runner__autoscaler_connector_config_username }}"
       use_external_addr = {{ gitlab_runner__autoscaler_connector_config_use_external_addr }}
 
     [[runners.autoscaler.policy]]
-      idle_count = 5
-      idle_time = "20m0s"
+      idle_count = {{ gitlab_runner__autoscaler_policy_idle_count }}
+      idle_time = "{{ gitlab_runner__autoscaler_policy_idle_time }}"
 {%   endif %}
 {%     if ((runner.cache | d() and runner.cache | bool) or gitlab_runner__cache | bool) %}
   [runners.cache]
