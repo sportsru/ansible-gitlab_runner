@@ -93,7 +93,8 @@
                                         + (gitlab_runner__shell_tags
                                            if (item.executor == "shell") else [])
                                         + gitlab_runner__combined_tags) | unique | join(","))
-           | urlencode }}&run_untagged={{ item.run_untagged | d(gitlab_runner__run_untagged) }}'
+           | urlencode }}&run_untagged={{ item.run_untagged | d(gitlab_runner__run_untagged) }}&runner_type={{ gitlab_runner__runner_type }}
+           {%- if gitlab_runner__runner_type == "group_type" -%}&group_id={{ gitlab_runner__group_id }}{%- endif -%}'
     status_code: '200,201'
   register: gitlab_runner__register_new_instances
   with_flattened:
